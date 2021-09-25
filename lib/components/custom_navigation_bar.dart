@@ -17,22 +17,13 @@ class CustomNavigationBar extends StatefulWidget {
   _NavigationBarState createState() => _NavigationBarState();
 }
 
-class NavigationBarDemo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-  
-}
-
 class _NavigationBarState extends State<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     final defaultSize = SizeConfig.defaultSize;
 
     final bloc = BlocProvider.of<NavigationBarBloc>(context);
-    
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: defaultSize * 3),
       decoration: BoxDecoration(
@@ -51,31 +42,35 @@ class _NavigationBarState extends State<CustomNavigationBar> {
     );
   }
 
-  BlocBuilder<NavigationBarBloc, NavigationBarState> buildBlocBuilder(NavigationBarBloc bloc) {
+  BlocBuilder<NavigationBarBloc, NavigationBarState> buildBlocBuilder(
+      NavigationBarBloc bloc) {
     return BlocBuilder<NavigationBarBloc, NavigationBarState>(
-        builder: (context, state) {
-          if (state is NavigationBarLoading) {
-            return buildLoadingWidget();
-          } else if (state is NavigationBarLoaded) {
+      builder: (context, state) {
+        switch (state.runtimeType) {
+          case NavigationBarLoaded:
+            final loadedState = state as NavigationBarLoaded;
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
-                state.props.length,
+                loadedState.props.length,
                 (index) => buildIconNavigationItem(
-                  isActive: state.props[index].isActive,
-                  icon: state.props[index].icon,
+                  isActive: loadedState.props[index].isActive,
+                  icon: loadedState.props[index].icon,
                   press: () {
                     bloc.add(
-                      SelectNavigationItem(index),
+                      SelectNavigationItem(index, loadedState.props),
                     );
                   },
                 ),
               ),
             );
-          } else
+          case NavigationBarLoading:
+            return buildLoadingWidget();
+          default:
             return buildErrorWidget();
-        },
-      );
+        }
+      },
+    );
   }
 
   IconButton buildIconNavigationItem(
