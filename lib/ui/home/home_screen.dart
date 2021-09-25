@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_bloc.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_events.dart';
-import 'package:habit_ly/bloc/navigation_bar/nav_bar_states.dart';
 import 'package:habit_ly/components/custom_navigation_bar.dart';
 import 'package:habit_ly/configuration/dependency_injection.dart';
 import 'package:habit_ly/configuration/size_configuration.dart';

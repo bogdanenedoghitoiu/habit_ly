@@ -8,37 +8,43 @@ import 'nav_bar_events.dart';
 class NavigationBarBloc extends Bloc<NavigationBarEvent, NavigationBarState> {
   final NavigationBarItemProvider navigationBarItemProvider;
 
-  // TODO find better way of structuring the navigation bar items
-  List<NavigationItem> navigationBarItems = [];
+  // TODO move to service
+  List<NavigationItem> _navigationBarItems = [];
 
-  List<NavigationItem> get items => navigationBarItems;
+  List<NavigationItem> get items => _navigationBarItems;
 
   NavigationBarBloc(this.navigationBarItemProvider)
       : super(NavigationBarLoading());
 
   @override
   Stream<NavigationBarState> mapEventToState(NavigationBarEvent event) async* {
-    if (event is GenerateDefaultNavigationBar) {
-      navigationBarItems = await fetchNavigationBarItems();
+    switch(event.runtimeType) {
+      case SelectNavigationItem:
+        changeSelectedItem(index: (event as SelectNavigationItem).index);
+    }
 
-      yield generateLoadedState(0);
+    if (event is GenerateDefaultNavigationBar) {
+      _navigationBarItems =
+          await navigationBarItemProvider.getDummyNavBarItems();
+
+      yield generateLoadedState();
     } else if (event is SelectNavigationItem) {
-      yield generateLoadedState(event.index);
+      changeSelectedItem(index: event.index);
+
+      yield generateLoadedState();
     }
   }
 
-  Future<List<NavigationItem>> fetchNavigationBarItems() async {
-    return await navigationBarItemProvider.getDummyNavBarItems();
+  // TODO move to service
+
+  void changeSelectedItem({int index = 0}) {
+    // deselect current item
+    _navigationBarItems.singleWhere((item) => item.isActive).isActive = false;
+
+    _navigationBarItems[index].isActive = true;
   }
 
-  NavigationBarLoaded generateLoadedState(int index) {
-    // deselect current item
-    navigationBarItems
-        .singleWhere((item) => item.isActive)
-        .isActive = false;
-
-    navigationBarItems[index].isActive = true;
-
-    return NavigationBarLoaded(navigationBarItems);
+  NavigationBarLoaded generateLoadedState() {
+    return NavigationBarLoaded(_navigationBarItems);
   }
 }

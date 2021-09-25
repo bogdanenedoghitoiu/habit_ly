@@ -17,13 +17,22 @@ class CustomNavigationBar extends StatefulWidget {
   _NavigationBarState createState() => _NavigationBarState();
 }
 
+class NavigationBarDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+  
+}
+
 class _NavigationBarState extends State<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     final defaultSize = SizeConfig.defaultSize;
 
-    final _navigationBarBloc = BlocProvider.of<NavigationBarBloc>(context);
-
+    final bloc = BlocProvider.of<NavigationBarBloc>(context);
+    
     return Container(
       padding: EdgeInsets.symmetric(horizontal: defaultSize * 3),
       decoration: BoxDecoration(
@@ -37,32 +46,36 @@ class _NavigationBarState extends State<CustomNavigationBar> {
         ],
       ),
       child: SafeArea(
-        child: BlocBuilder<NavigationBarBloc, NavigationBarState>(
-          builder: (context, state) {
-            if (state is NavigationBarLoading) {
-              return _buildLoadingWidget();
-            } else if (state is NavigationBarLoaded) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(
-                  state.navigationItems.length,
-                  (index) => buildIconNavigationItem(
-                    isActive: state.navigationItems[index].isActive,
-                    icon: state.navigationItems[index].icon,
-                    press: () {
-                      _navigationBarBloc.add(
-                        SelectNavigationItem(index),
-                      );
-                    },
-                  ),
-                ),
-              );
-            } else
-              return _buildErrorWidget();
-          },
-        ),
+        child: buildBlocBuilder(bloc),
       ),
     );
+  }
+
+  BlocBuilder<NavigationBarBloc, NavigationBarState> buildBlocBuilder(NavigationBarBloc bloc) {
+    return BlocBuilder<NavigationBarBloc, NavigationBarState>(
+        builder: (context, state) {
+          if (state is NavigationBarLoading) {
+            return buildLoadingWidget();
+          } else if (state is NavigationBarLoaded) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(
+                state.props.length,
+                (index) => buildIconNavigationItem(
+                  isActive: state.props[index].isActive,
+                  icon: state.props[index].icon,
+                  press: () {
+                    bloc.add(
+                      SelectNavigationItem(index),
+                    );
+                  },
+                ),
+              ),
+            );
+          } else
+            return buildErrorWidget();
+        },
+      );
   }
 
   IconButton buildIconNavigationItem(
@@ -79,13 +92,13 @@ class _NavigationBarState extends State<CustomNavigationBar> {
     );
   }
 
-  Widget _buildLoadingWidget() {
+  Widget buildLoadingWidget() {
     return Center(
       child: CircularProgressIndicator(),
     );
   }
 
-  Widget _buildErrorWidget() {
+  Widget buildErrorWidget() {
     return Container(
       child: Text("Error"),
     );

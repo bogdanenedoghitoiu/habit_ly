@@ -7,9 +7,9 @@ class NavigationBarLoading extends NavigationBarState {
 }
 
 class NavigationBarLoaded extends NavigationBarState {
-  final List<NavigationItem> navigationItems;
+  final List<NavigationItem> _navigationItems;
 
-  NavigationBarLoaded(this.navigationItems);
+  NavigationBarLoaded(this._navigationItems);
 
-  List<Object> get props => [navigationItems];
+  List<NavigationItem> get props => _navigationItems;
 }
