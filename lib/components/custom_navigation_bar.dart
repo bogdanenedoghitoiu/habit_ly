@@ -26,7 +26,6 @@ class _NavigationBarState extends State<CustomNavigationBar> {
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: defaultSize * 3),
-      // height: 80,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -42,7 +41,7 @@ class _NavigationBarState extends State<CustomNavigationBar> {
           builder: (context, state) {
             if (state is NavigationBarLoading) {
               return _buildLoadingWidget();
-            } else if (state is NavigationBarSuccess) {
+            } else if (state is NavigationBarLoaded) {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(

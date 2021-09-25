@@ -1,7 +1,7 @@
-abstract class NavigationItemEvent {
+abstract class NavigationBarEvent {
 }
 
-class SelectNavigationItem extends NavigationItemEvent {
+class SelectNavigationItem extends NavigationBarEvent {
   final int index;
 
   SelectNavigationItem(this.index);
@@ -9,6 +9,6 @@ class SelectNavigationItem extends NavigationItemEvent {
   List<Object> get props => [index];
 }
 
-class InitialNavigationItems extends NavigationItemEvent {
+class GenerateDefaultNavigationBar extends NavigationBarEvent {
   List<Object> get props => [];
 }

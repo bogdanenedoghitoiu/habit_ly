@@ -6,6 +6,7 @@ import 'package:habit_ly/bloc/navigation_bar/nav_bar_bloc.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_events.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_states.dart';
 import 'package:habit_ly/components/custom_navigation_bar.dart';
+import 'package:habit_ly/configuration/dependency_injection.dart';
 import 'package:habit_ly/configuration/size_configuration.dart';
 import 'package:habit_ly/ui/home/components/body.dart';
 
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       appBar: buildAppBar(),
       body: HomeScreenBody(),
       bottomNavigationBar: BlocProvider(
-        create: (_) => NavigationBarBloc(NavigationBarLoading())..add(InitialNavigationItems()),
+        create: (_) => getIt.get<NavigationBarBloc>()..add(GenerateDefaultNavigationBar()),
         child: CustomNavigationBar(),
       ),
     );

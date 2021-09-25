@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit_ly/data/models/navigation_item.dart';
 import 'package:habit_ly/ui/home/home_screen.dart';
-import 'package:provider/provider.dart';
 
 import 'bloc/bloc_observer.dart';
+import 'configuration/dependency_injection.dart';
 
 void main() {
+  configureDependencies();
   Bloc.observer = DefaultBlocObserver();
-
   runApp(MyApp());
 }
 

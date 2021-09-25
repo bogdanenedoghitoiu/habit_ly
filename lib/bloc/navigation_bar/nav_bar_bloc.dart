@@ -5,32 +5,40 @@ import 'package:habit_ly/data/providers/nav_bar_item_provider.dart';
 
 import 'nav_bar_events.dart';
 
-class NavigationBarBloc extends Bloc<NavigationItemEvent, NavigationBarState> {
-
-  // TODO add dependency injection
-  final NavigationBarItemProvider navigationBarItemProvider = NavigationBarItemProvider();
+class NavigationBarBloc extends Bloc<NavigationBarEvent, NavigationBarState> {
+  final NavigationBarItemProvider navigationBarItemProvider;
 
   // TODO find better way of structuring the navigation bar items
   List<NavigationItem> navigationBarItems = [];
+
   List<NavigationItem> get items => navigationBarItems;
 
-  NavigationBarBloc(NavigationBarState initialState) : super(NavigationBarLoading());
+  NavigationBarBloc(this.navigationBarItemProvider)
+      : super(NavigationBarLoading());
 
   @override
-  Stream<NavigationBarState> mapEventToState(NavigationItemEvent event) async* {
-    if (event is InitialNavigationItems) {
-      yield generateSuccessState(0);
+  Stream<NavigationBarState> mapEventToState(NavigationBarEvent event) async* {
+    if (event is GenerateDefaultNavigationBar) {
+      navigationBarItems = await fetchNavigationBarItems();
+
+      yield generateLoadedState(0);
     } else if (event is SelectNavigationItem) {
-      yield generateSuccessState(event.index);
+      yield generateLoadedState(event.index);
     }
   }
 
-  NavigationBarSuccess generateSuccessState(int index) {
-    navigationBarItems = navigationBarItemProvider.getDummyNavBarItems();
+  Future<List<NavigationItem>> fetchNavigationBarItems() async {
+    return await navigationBarItemProvider.getDummyNavBarItems();
+  }
+
+  NavigationBarLoaded generateLoadedState(int index) {
+    // deselect current item
+    navigationBarItems
+        .singleWhere((item) => item.isActive)
+        .isActive = false;
 
     navigationBarItems[index].isActive = true;
 
-    return NavigationBarSuccess(navigationBarItems);
+    return NavigationBarLoaded(navigationBarItems);
   }
-
 }
