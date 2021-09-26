@@ -1,23 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_bloc.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_events.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_states.dart';
 import 'package:habit_ly/configuration/global_constants.dart';
 import 'package:habit_ly/configuration/size_configuration.dart';
 
-class CustomNavigationBar extends StatefulWidget {
+class CustomNavigationBar extends StatelessWidget {
   const CustomNavigationBar({
     Key? key,
   }) : super(key: key);
 
-  @override
-  _NavigationBarState createState() => _NavigationBarState();
-}
-
-class _NavigationBarState extends State<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     final defaultSize = SizeConfig.defaultSize;
@@ -73,10 +68,11 @@ class _NavigationBarState extends State<CustomNavigationBar> {
     );
   }
 
-  IconButton buildIconNavigationItem(
-      {required String icon,
-      required Function() press,
-      bool isActive = false}) {
+  IconButton buildIconNavigationItem({
+    required String icon,
+    required Function() press,
+    bool isActive = false,
+  }) {
     return IconButton(
       icon: SvgPicture.asset(
         icon,
