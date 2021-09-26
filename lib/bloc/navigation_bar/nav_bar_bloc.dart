@@ -9,8 +9,10 @@ class NavigationBarBloc extends Bloc<NavigationBarEvent, NavigationBarState> {
   final NavigationBarItemProvider navigationBarItemProvider;
   final NavigationBarHelper navigationBarHelper;
 
-  NavigationBarBloc(this.navigationBarItemProvider, this.navigationBarHelper)
-      : super(NavigationBarLoading());
+  NavigationBarBloc(
+    this.navigationBarItemProvider,
+    this.navigationBarHelper,
+  ) : super(NavigationBarLoading());
 
   @override
   Stream<NavigationBarState> mapEventToState(NavigationBarEvent event) async* {

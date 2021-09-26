@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:habit_ly/bloc/categories/categories_bloc.dart';
+import 'package:habit_ly/bloc/categories/categories_events.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_bloc.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_events.dart';
 import 'package:habit_ly/shared_components/custom_navigation_bar.dart';
@@ -18,7 +20,11 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: buildAppBar(),
-      body: HomeScreenBody(),
+      body: BlocProvider(
+        create: (_) =>
+            getIt.get<HabitCategoriesBloc>()..add(PopulateHabitCategories()),
+        child: HomeScreenBody(),
+      ),
       bottomNavigationBar: BlocProvider(
         create: (_) =>
             getIt.get<NavigationBarBloc>()..add(GenerateDefaultNavigationBar()),

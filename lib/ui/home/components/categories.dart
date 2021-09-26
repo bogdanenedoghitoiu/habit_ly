@@ -23,9 +23,10 @@ class _CategoriesState extends State<Categories> {
       child: SizedBox(
         height: SizeConfig.defaultSize * 3.5,
         child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
-            itemBuilder: (context, index) => buildCategoryItem(index)),
+          scrollDirection: Axis.horizontal,
+          itemCount: categories.length,
+          itemBuilder: (context, index) => buildCategoryItem(index),
+        ),
       ),
     );
   }
@@ -45,7 +46,8 @@ class _CategoriesState extends State<Categories> {
           vertical: SizeConfig.defaultSize * 0.5,
         ),
         decoration: BoxDecoration(
-          color: selectedIndex == index ? Color(0xFFEFF3EE) : Colors.transparent,
+          color:
+              selectedIndex == index ? Color(0xFFEFF3EE) : Colors.transparent,
           borderRadius: BorderRadius.circular(SizeConfig.defaultSize * 1.6),
         ),
         child: Text(

@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_ly/configuration/size_configuration.dart';
-import 'package:habit_ly/data/providers/dummy_provider.dart';
+import 'package:habit_ly/data/providers/habit_categories_provider.dart';
 
 class CategoryBundleCard extends StatelessWidget {
   final CategoryBundle categoryBundle;
   final Function? press;
 
-  const CategoryBundleCard(
-      {Key? key, required this.categoryBundle, this.press})
-      : super(key: key);
+  const CategoryBundleCard({
+    Key? key,
+    required this.categoryBundle,
+    this.press,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

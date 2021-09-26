@@ -37,13 +37,14 @@ class CustomNavigationBar extends StatelessWidget {
     );
   }
 
-  BlocBuilder<NavigationBarBloc, NavigationBarState> buildBlocBuilder(
+  Widget buildBlocBuilder(
       NavigationBarBloc bloc) {
     return BlocBuilder<NavigationBarBloc, NavigationBarState>(
       builder: (context, state) {
         switch (state.runtimeType) {
           case NavigationBarLoaded:
             final loadedState = state as NavigationBarLoaded;
+
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(

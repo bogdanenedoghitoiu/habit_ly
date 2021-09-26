@@ -16,16 +16,7 @@ class NavigationBarItemProvider {
       ),
       NavigationItem(
         id: 3,
-        icon: "assets/icons/camera.svg",
-      ),
-      NavigationItem(
-        id: 4,
-        icon: "assets/icons/chef_nav.svg",
-      ),
-      NavigationItem(
-        id: 5,
         icon: "assets/icons/user.svg",
-        destination: HomeScreen(),
       ),
     ];
   }
