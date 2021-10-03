@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:habit_ly/configuration/dependency_injection.dart';
+import 'package:habit_ly/configuration/global_constants.dart';
 import 'package:habit_ly/shared_components/rounded_button.dart';
 import 'package:habit_ly/ui/home/home_screen.dart';
 import 'package:habit_ly/ui/login/login_screen.dart';
@@ -36,7 +37,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 );
               },
-              backgroundColor: Color(0xFF6F35A5),
+              backgroundColor: primaryPurpleColor,
             ),
             RoundedButton(
               text: "SIGNUP",

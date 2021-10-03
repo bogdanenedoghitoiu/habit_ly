@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:habit_ly/configuration/dependency_injection.dart';
+import 'package:habit_ly/configuration/global_constants.dart';
+import 'package:habit_ly/shared_components/rounded_button.dart';
+import 'package:habit_ly/shared_components/rounded_password_input.dart';
+import 'package:habit_ly/shared_components/rounded_text_input.dart';
+import 'package:habit_ly/ui/home/home_screen.dart';
+import 'package:habit_ly/ui/signup/signup_screen.dart';
+
+import 'components/background.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -8,27 +18,60 @@ class LoginScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: size.height,
-        child: Stack(
-          alignment: Alignment.center,
+      body: Background(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Positioned(
-              top: 0,
-              left: 0,
-              child: Image.asset(
-                "assets/images/main_top.png",
-                width: size.width * 0.035,
-              ),
+            SvgPicture.asset(
+              "assets/icons/login.svg",
+              height: size.height * 0.35,
             ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Image.asset(
-                "assets/images/login_bottom.png",
-                width: size.width * 0.04,
-              ),
+            RoundedTextInput(
+              hintText: "your e-mail address",
+              icon: Icons.person,
+              onChanged: (value) {},
+            ),
+            RoundedPasswordInput(
+              onChanged: (value) {},
+            ),
+            RoundedButton(
+              text: "LOGIN",
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => getIt.get<HomeScreen>(),
+                  ),
+                );
+              },
+              backgroundColor: primaryPurpleColor,
+            ),
+            SizedBox(height: size.height * 0.01),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account? ",
+                  style: TextStyle(
+                    color: primaryPurpleColor,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => getIt.get<SignupScreen>(),
+                      ),
+                    );
+                  },
+                  child: Text("Sign up!",
+                  style: TextStyle(
+                    color: primaryPurpleColor,
+                    fontWeight: FontWeight.bold,
+                  ),),
+                ),
+              ],
             ),
           ],
         ),
