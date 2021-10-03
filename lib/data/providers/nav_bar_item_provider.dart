@@ -1,5 +1,6 @@
 import 'package:habit_ly/data/models/navigation_item.dart';
 import 'package:habit_ly/ui/home/home_screen.dart';
+import 'package:habit_ly/ui/welcome/welcome_screen.dart';
 
 class NavigationBarItemProvider {
   Future<List<NavigationItem>> getDummyNavBarItems() async {
@@ -17,6 +18,7 @@ class NavigationBarItemProvider {
       NavigationItem(
         id: 3,
         icon: "assets/icons/user.svg",
+        destination: WelcomeScreen(),
       ),
     ];
   }

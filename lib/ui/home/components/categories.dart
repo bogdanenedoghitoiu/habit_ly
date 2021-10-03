@@ -11,6 +11,7 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
+  // TODO refactor these
   final categories = ["All", "Health", "Fitness", "Painting", "Development"];
   var selectedIndex = 0;
 

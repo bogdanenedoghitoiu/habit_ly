@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:habit_ly/ui/home/home_screen.dart';
+import 'package:habit_ly/ui/welcome/welcome_screen.dart';
 
 import 'bloc/bloc_observer.dart';
 import 'configuration/dependency_injection.dart';
@@ -12,11 +12,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Container(
-      // create: (context) => NavigationItems(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Habit_ly',
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: AppBarTheme(color: Colors.white, elevation: 0),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: HomeScreen(),
+        home:  getIt.get<WelcomeScreen>(),
       ),
     );
   }

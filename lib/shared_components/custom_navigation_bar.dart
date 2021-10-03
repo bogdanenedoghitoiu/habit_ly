@@ -7,6 +7,7 @@ import 'package:habit_ly/bloc/navigation_bar/nav_bar_events.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_states.dart';
 import 'package:habit_ly/configuration/global_constants.dart';
 import 'package:habit_ly/configuration/size_configuration.dart';
+import 'package:habit_ly/ui/welcome/welcome_screen.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   const CustomNavigationBar({
