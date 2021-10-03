@@ -34,6 +34,7 @@ class LoginScreen extends StatelessWidget {
             RoundedPasswordInput(
               onChanged: (value) {},
             ),
+            SizedBox(height: size.height * 0.02),
             RoundedButton(
               text: "LOGIN",
               press: () {
@@ -65,11 +66,13 @@ class LoginScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text("Sign up!",
-                  style: TextStyle(
-                    color: primaryPurpleColor,
-                    fontWeight: FontWeight.bold,
-                  ),),
+                  child: Text(
+                    "Sign up!",
+                    style: TextStyle(
+                      color: primaryPurpleColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),
