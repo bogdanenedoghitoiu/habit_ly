@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:habit_ly/bloc/signup/signup_bloc.dart';
+import 'package:habit_ly/bloc/signup/signup_events.dart';
 import 'package:habit_ly/configuration/dependency_injection.dart';
 import 'package:habit_ly/configuration/global_constants.dart';
 import 'package:habit_ly/shared_components/rounded_button.dart';
@@ -46,7 +49,12 @@ class WelcomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => getIt.get<SignupScreen>(),
+                      builder: (context) => BlocProvider(
+                        create: (_) => getIt.get<SignUpBloc>()
+                          ..add(GenerateSignUpScreen()),
+                        child: SignUpScreen(),
+                      ),
+                      // builder: (context) => getIt.get<SignupScreen>(),
                     ),
                   );
                 },
