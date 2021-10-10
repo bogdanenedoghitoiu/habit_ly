@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "173206941066",
+    "project_id": "habit-ly",
+    "storage_bucket": "habit-ly.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173206941066:android:36a39c4ab14fba0fc52c73",
+        "android_client_info": {
+          "package_name": "cerulean.tech.habit_ly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173206941066-pg366bvib8a97mcfag5dkqnetmako46e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1YNQ15Fi8ZbPS9oFYKU4Uh7JDPLR8IvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173206941066-pg366bvib8a97mcfag5dkqnetmako46e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
