@@ -50,27 +50,30 @@ class SignUpScreen extends StatelessWidget {
 
   AlertDialog _buildSignUpDialog(BuildContext context) {
     return AlertDialog(
-            title: Text('SUCCESS'),
-            content: Text('You are now signed up.'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => getIt.get<HomeScreen>(),
-                    ),
-                  );
-                },
-                child: Text("OK"),
+      title: Text('SUCCESS'),
+      content: Text('You are now signed up.'),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => getIt.get<HomeScreen>(),
               ),
-            ],
-          );
+            );
+          },
+          child: Text("OK"),
+        ),
+      ],
+    );
   }
 
   SingleChildScrollView _buildSignUpElements(
       BuildContext context, SignUpBloc bloc) {
     final size = MediaQuery.of(context).size;
+
+    final emailInput = TextEditingController();
+    final passwordInput = TextEditingController();
 
     return SingleChildScrollView(
       child: Column(
@@ -84,16 +87,18 @@ class SignUpScreen extends StatelessWidget {
             hintText: "your e-mail address",
             icon: Icons.person,
             onChanged: (value) {},
+            controller: emailInput,
           ),
           RoundedPasswordInput(
             onChanged: (value) {},
+            controller: passwordInput,
           ),
           SizedBox(height: size.height * 0.02),
           RoundedButton(
             text: "SIGNUP",
             press: () {
               bloc.add(
-                SignUp('bogdanenedoghitoiu@gmail.com', 'TsunamiFTW3214.'),
+                SignUp(emailInput.text, passwordInput.text),
               );
             },
             backgroundColor: primaryPurpleColor,

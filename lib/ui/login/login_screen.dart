@@ -18,6 +18,9 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    final emailInput = TextEditingController();
+    final passwordInput = TextEditingController();
+
     return Scaffold(
       body: Background(
         child: SingleChildScrollView(
@@ -32,9 +35,11 @@ class LoginScreen extends StatelessWidget {
                 hintText: "your e-mail address",
                 icon: Icons.person,
                 onChanged: (value) {},
+                controller: emailInput,
               ),
               RoundedPasswordInput(
                 onChanged: (value) {},
+                controller: passwordInput,
               ),
               SizedBox(height: size.height * 0.02),
               RoundedButton(
