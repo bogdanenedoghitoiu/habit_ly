@@ -49,18 +49,7 @@ class _MyAppState extends State<MyApp> {
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          return Container(
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Habit_ly',
-              theme: ThemeData(
-                scaffoldBackgroundColor: Colors.white,
-                appBarTheme: AppBarTheme(color: Colors.white, elevation: 0),
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-              ),
-              home: getIt.get<WelcomeScreen>(),
-            ),
-          );
+          return HabitLyApp();
         }
 
         return Container(
@@ -82,20 +71,24 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: MaterialApp(
-//         debugShowCheckedModeBanner: false,
-//         title: 'Habit_ly',
-//         theme: ThemeData(
-//           scaffoldBackgroundColor: Colors.white,
-//           appBarTheme: AppBarTheme(color: Colors.white, elevation: 0),
-//           visualDensity: VisualDensity.adaptivePlatformDensity,
-//         ),
-//         home:  getIt.get<WelcomeScreen>(),
-//       ),
-//     );
-//   }
-// }
+class HabitLyApp extends StatelessWidget {
+  const HabitLyApp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Habit_ly',
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: AppBarTheme(color: Colors.white, elevation: 0),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: getIt.get<WelcomeScreen>(),
+      ),
+    );
+  }
+}

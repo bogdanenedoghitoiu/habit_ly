@@ -7,7 +7,6 @@ import 'package:habit_ly/bloc/navigation_bar/nav_bar_events.dart';
 import 'package:habit_ly/bloc/navigation_bar/nav_bar_states.dart';
 import 'package:habit_ly/configuration/global_constants.dart';
 import 'package:habit_ly/configuration/size_configuration.dart';
-import 'package:habit_ly/ui/welcome/welcome_screen.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   const CustomNavigationBar({
@@ -78,7 +77,7 @@ class CustomNavigationBar extends StatelessWidget {
     return IconButton(
       icon: SvgPicture.asset(
         icon,
-        color: isActive ? primaryColor : Color(0xFFD1D4D4),
+        color: isActive ? primaryPurpleColor : Color(0xFFD1D4D4),
         height: 22,
       ),
       onPressed: press,
