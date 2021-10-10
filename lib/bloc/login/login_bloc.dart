@@ -3,13 +3,13 @@ import 'package:habit_ly/bloc/login/login_events.dart';
 import 'package:habit_ly/bloc/login/login_states.dart';
 import 'package:habit_ly/data/repositories/firebase_auth_repository.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState> {
+class LogInBloc extends Bloc<LogInEvent, LogInState> {
   final FirebaseAuthRepository _authRepository;
 
-  LoginBloc(this._authRepository) : super(LoginLoading());
+  LogInBloc(this._authRepository) : super(LogInLoading());
 
   @override
-  Stream<LoginState> mapEventToState(LoginEvent event) async* {
+  Stream<LogInState> mapEventToState(LogInEvent event) async* {
     switch (event.runtimeType) {
       case SignIn:
         final signInEvent = event as SignIn;
@@ -18,7 +18,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final user = await _authRepository.signIn(
             signInCredentials[0], signInCredentials[1]);
 
-        yield LoginSuccess(user);
+        yield LogInSuccess(user);
         break;
       case AlreadyLoggedIn:
       default:

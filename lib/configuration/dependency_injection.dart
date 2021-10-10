@@ -61,8 +61,8 @@ void configureDependencies() {
     ),
   );
 
-  getIt.registerFactory<LoginBloc>(
-    () => LoginBloc(
+  getIt.registerFactory<LogInBloc>(
+    () => LogInBloc(
       getIt.get<FirebaseAuthRepository>(),
     ),
   );

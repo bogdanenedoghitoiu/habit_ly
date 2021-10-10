@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-abstract class LoginEvent extends Equatable {}
+abstract class LogInEvent extends Equatable {}
 
-class SignIn extends LoginEvent {
+class SignIn extends LogInEvent {
   final String _emailAddress;
   final String _password;
 
@@ -12,7 +12,7 @@ class SignIn extends LoginEvent {
   List<String> get props => [this._emailAddress, this._password];
 }
 
-class GoogleLogin extends LoginEvent {
+class GoogleLogin extends LogInEvent {
   @override
   List<Object?> get props => [];
 }
