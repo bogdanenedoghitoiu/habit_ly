@@ -11,8 +11,8 @@ import 'package:habit_ly/ui/signup/signup_screen.dart';
 
 import 'components/background.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LogInScreen extends StatelessWidget {
+  const LogInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

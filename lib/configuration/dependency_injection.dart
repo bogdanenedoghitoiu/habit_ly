@@ -8,6 +8,7 @@ import 'package:habit_ly/data/providers/habit_categories_provider.dart';
 import 'package:habit_ly/data/providers/nav_bar_item_provider.dart';
 import 'package:habit_ly/data/repositories/firebase_auth_repository.dart';
 import 'package:habit_ly/helpers/navigation_bar_helper.dart';
+import 'package:habit_ly/ui/error/error_screen.dart';
 import 'package:habit_ly/ui/home/home_screen.dart';
 import 'package:habit_ly/ui/login/login_screen.dart';
 import 'package:habit_ly/ui/signup/signup_screen.dart';
@@ -75,7 +76,8 @@ void configureDependencies() {
 
   // screens
   getIt.registerLazySingleton(() => WelcomeScreen());
-  getIt.registerLazySingleton(() => LoginScreen());
+  getIt.registerLazySingleton(() => LogInScreen());
   getIt.registerLazySingleton(() => SignUpScreen());
   getIt.registerLazySingleton(() => HomeScreen());
+  getIt.registerLazySingleton(() => GenericErrorScreen());
 }

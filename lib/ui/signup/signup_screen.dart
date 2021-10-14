@@ -12,6 +12,7 @@ import 'package:habit_ly/shared_components/rounded_button.dart';
 import 'package:habit_ly/shared_components/rounded_password_input.dart';
 import 'package:habit_ly/shared_components/rounded_text_input.dart';
 import 'package:habit_ly/shared_components/social_media_icon.dart';
+import 'package:habit_ly/ui/error/error_screen.dart';
 import 'package:habit_ly/ui/home/home_screen.dart';
 import 'package:habit_ly/ui/login/login_screen.dart';
 
@@ -26,45 +27,29 @@ class SignUpScreen extends StatelessWidget {
 
     return Scaffold(
       body: Background(
-        child: _buildBlocBuilder(bloc),
-      ),
-    );
-  }
-
-  Widget _buildBlocBuilder(SignUpBloc bloc) {
-    return BlocBuilder<SignUpBloc, SignUpState>(
-      builder: (context, state) {
-        switch (state.runtimeType) {
-          // TODO show alert on top of SignUpScreen UI
-          case SignUpSuccess:
-            return _buildSignUpDialog(context);
-          case SignUpLoaded:
-            return _buildSignUpElements(context, bloc);
-          case SignUpLoading:
-          default:
-            return _buildLoadingWidget();
-        }
-      },
-    );
-  }
-
-  AlertDialog _buildSignUpDialog(BuildContext context) {
-    return AlertDialog(
-      title: Text('SUCCESS'),
-      content: Text('You are now signed up.'),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => getIt.get<HomeScreen>(),
-              ),
-            );
+        child: BlocConsumer<SignUpBloc, SignUpState>(
+          listener: (context, state) {
+            if (state.runtimeType == SignUpSuccess) {
+              // TODO add a snack bar with a success message
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => getIt.get<HomeScreen>(),
+                ),
+              );
+            }
           },
-          child: Text("OK"),
+          builder: (context, state) {
+            switch (state.runtimeType) {
+              case SignUpLoaded:
+                return _buildSignUpElements(context, bloc);
+              case SignUpLoading:
+              default:
+                return _buildLoadingWidget();
+            }
+          },
         ),
-      ],
+      ),
     );
   }
 
@@ -109,7 +94,7 @@ class SignUpScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => getIt.get<LoginScreen>(),
+                  builder: (context) => getIt.get<LogInScreen>(),
                 ),
               );
             },
