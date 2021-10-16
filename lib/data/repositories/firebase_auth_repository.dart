@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:habit_ly/configuration/firebase_constants.dart';
 
 class FirebaseAuthRepository {
   final GoogleSignIn _googleSignIn;
@@ -63,10 +64,10 @@ class FirebaseAuthRepository {
     if (user != null && !user.emailVerified) {
       final actionCodeSettings = ActionCodeSettings(
         url: 'https://www.example.com/?email=${user.email}',
-        dynamicLinkDomain: 'example.page.link',
-        androidPackageName: 'cerulean.tech.habit_ly',
+        dynamicLinkDomain: dynamicLinkDomain,
+        androidPackageName: androidPackageName,
         androidInstallApp: true,
-        iOSBundleId: 'cerulean.tech.ios',
+        iOSBundleId: iosBundleId,
         handleCodeInApp: true,
       );
 
