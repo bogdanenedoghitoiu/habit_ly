@@ -11,6 +11,7 @@ import 'package:habit_ly/helpers/navigation_bar_helper.dart';
 import 'package:habit_ly/ui/error/error_screen.dart';
 import 'package:habit_ly/ui/home/home_screen.dart';
 import 'package:habit_ly/ui/login/login_screen.dart';
+import 'package:habit_ly/ui/profile/profile_screen.dart';
 import 'package:habit_ly/ui/signup/signup_screen.dart';
 import 'package:habit_ly/ui/welcome/welcome_screen.dart';
 
@@ -80,4 +81,5 @@ void configureDependencies() {
   getIt.registerLazySingleton(() => SignUpScreen());
   getIt.registerLazySingleton(() => HomeScreen());
   getIt.registerLazySingleton(() => GenericErrorScreen());
+  getIt.registerLazySingleton(() => ProfileScreen());
 }
