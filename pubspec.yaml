@@ -36,6 +36,7 @@ dependencies:
   firebase_core: ^1.7.0
   google_sign_in: ^5.1.1
   equatable: ^2.0.3
+  persistent_bottom_nav_bar: ^4.0.2
   
 
 dev_dependencies:

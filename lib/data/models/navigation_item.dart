@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 class NavigationItem {
   final int id;
   final String icon;
-  final Widget? destination;
+  final Widget destination;
   bool isActive;
 
   NavigationItem({
     required this.id,
     required this.icon,
-    this.destination,
+    required this.destination,
     this.isActive = false,
   });
 }
