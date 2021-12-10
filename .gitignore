@@ -1,0 +1,19 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/build/
+/.dart_tool/
+/.flutter-plugins
+/.flutter-plugins-dependencies
+/.packages
+/.idea/libraries/Dart_Packages.xml
+/.idea/libraries/Dart_SDK.xml
+/.idea/libraries/Flutter_Plugins.xml
+/lib/generated_plugin_registrant.dart
+/.idea/habit_ly.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/ios/Podfile
+/ios/Podfile.lock
+/.idea/vcs.xml
+/.idea/.gitignore
