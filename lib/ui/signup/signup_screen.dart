@@ -30,7 +30,6 @@ class SignUpScreen extends StatelessWidget {
         child: BlocConsumer<SignUpBloc, SignUpState>(
           listener: (context, state) {
             if (state.runtimeType == SignUpSuccess) {
-              // TODO add a snack bar with a success message
               Navigator.push(
                 context,
                 MaterialPageRoute(

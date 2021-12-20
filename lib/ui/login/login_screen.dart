@@ -7,7 +7,8 @@ import 'package:habit_ly/shared_components/rounded_button.dart';
 import 'package:habit_ly/shared_components/rounded_password_input.dart';
 import 'package:habit_ly/shared_components/rounded_text_input.dart';
 import 'package:habit_ly/ui/home/home_screen.dart';
-import 'package:habit_ly/ui/signup/signup_screen.dart';
+import 'package:habit_ly/ui/profile/profile_screen.dart';
+import 'package:habit_ly/ui/screen_template/screen_template.dart';
 
 import 'components/background.dart';
 
@@ -48,7 +49,7 @@ class LogInScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => getIt.get<HomeScreen>(),
+                      builder: (context) => getIt.get<ScreenTemplate>(),
                     ),
                   );
                 },
@@ -61,7 +62,7 @@ class LogInScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => getIt.get<SignUpScreen>(),
+                      builder: (context) => getIt.get<ProfileScreen>(),
                     ),
                   );
                 },

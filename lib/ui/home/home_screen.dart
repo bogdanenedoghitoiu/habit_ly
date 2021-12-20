@@ -25,11 +25,11 @@ class HomeScreen extends StatelessWidget {
             getIt.get<HabitCategoriesBloc>()..add(PopulateHabitCategories()),
         child: HomeScreenBody(),
       ),
-      bottomNavigationBar: BlocProvider(
-        create: (_) =>
-            getIt.get<NavigationBarBloc>()..add(GenerateDefaultNavigationBar()),
-        child: CustomNavigationBar(),
-      ),
+      // bottomNavigationBar: BlocProvider(
+      //   create: (_) =>
+      //       getIt.get<NavigationBarBloc>()..add(GenerateDefaultNavigationBar()),
+      //   child: CustomNavigationBar(),
+      // ),
     );
   }
 }
